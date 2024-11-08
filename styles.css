@@ -1,0 +1,234 @@
+/* General styles and layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.5s;
+    position: relative;
+}
+
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #000;
+    --button-bg: #f7f7f7;
+    --button-hover-bg: #e0e0e0;
+    --display-bg: #fff;
+    --divider-color: #d3d3d3;
+}
+
+body.dark-mode {
+    --bg-color: #202124;
+    --text-color: #fff;
+    --button-bg: #3c4043;
+    --button-hover-bg: #5f6368;
+    --display-bg: #303134;
+    --divider-color: #525456;
+}
+
+/* Toggle switch at the top-right */
+.top-right-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+/* Calculator container */
+.calculator {
+    background-color: var(--display-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 460px;
+    max-width: 90%;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.display input {
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: right;
+    padding: 15px;
+    border: none;
+    background-color: var(--display-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Divider */
+.divider {
+    height: 2px;
+    background-color: var(--divider-color);
+    margin: 15px 0;
+}
+
+/* Calculator body */
+.calculator-body {
+    display: flex;
+}
+
+/* Operators (Left) */
+.operators {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+button.orange {
+    background-color: orange;
+    color: white;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+}
+
+/* Numbers (Right) */
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-left: 20px;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+}
+
+button.red {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Increase the size of the equals button */
+button.equals {
+    grid-column: span 2; /* Makes the button take two columns */
+    font-size: 2rem;
+    padding: 30px; /* Make it larger */
+}
+
+/* From Uiverse.io by andrew-demchenk0 */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #73C0FC;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    left: 2px;
+    bottom: 2px;
+    z-index: 2;
+    background-color: #e8e8e8;
+    transition: .4s;
+}
+
+.sun svg {
+    position: absolute;
+    top: 6px;
+    left: 36px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+}
+
+.moon svg {
+    fill: #73C0FC;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+}
+
+/* .switch:hover */.sun svg {
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* .switch:hover */.moon svg {
+    animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.input:checked + .slider {
+    background-color: #183153;
+}
+
+.input:focus + .slider {
+    box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+    transform: translateX(30px);
+}
